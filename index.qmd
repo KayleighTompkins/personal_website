@@ -1,5 +1,5 @@
 ---
-title: "KayleighTompkins.github.io"
+title: Welcome to my website!
 ---
 
 This is a Quarto website.
