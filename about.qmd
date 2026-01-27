@@ -12,7 +12,7 @@ When not walking the halls of Green Hall, I enjoy hiking, running, team sports a
 
 ::: {.column width="50%"}
 
-::: {#fig-nellie}
+::: {#fig-nellie fig-numbering=false}
 ![](images/Nellie_Suitcase.jpg){width=100%}
 Nellie, professional suitcase supervisor
 :::
@@ -21,7 +21,7 @@ Nellie, professional suitcase supervisor
 
 ::: {.column width="50%"}
 
-::: {#fig-norman}
+::: {#fig-norman fig-numbering=false}
 ![](images/Norman_Helping.jpg){width=100%}
 Norman, dedicated research assistant
 :::
@@ -29,4 +29,3 @@ Norman, dedicated research assistant
 :::
 
 ::::
-

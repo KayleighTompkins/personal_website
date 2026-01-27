@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  
+site-url: https://kayleightompkins.github.io/personal_website/
 
 website:
   title: "Kayleigh Tompkins"
