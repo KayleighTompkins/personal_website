@@ -1,0 +1,25 @@
+---
+title: "Research"
+---
+
+## Current Projects
+
+**Hello, Goodbye, Pay Later: Why States Withhold Funds from International Organizations.** Working Paper
+
+-   An extension of von Borzyskowski and Vabulas (2019), this paper examines the financial dimensions of state commitment and withdrawal from international organizations. 
+
+**Searching for Democracy: Citizen Perceptions of Democratic Backsliding** with Samiul Haque.
+
+-   We combine Google Trends data with the Democratic Erosion Events Database to identify if citizens can recognize and respond to incidences of democratic backsliding. It is scheduled to be presented at the Midwest Political Science Association (MPSA) in April 2026.\
+
+**Sliding in the Polls: The Impact of Hurricane Helene on Voter Behavior in North Carolina** with Mamie Cincotta.
+
+-   We leverage landslide data and predicted hurricane path maps to investigate the impact of Hurricane Helene on voter turnout and behavior in the 2024 Presidential elections held in North Carolina. It is due to be presented at the Midwest Political Science Association (MPSA) in April 2026.
+
+## Academic Publications
+
+-   Peinhardt, C. & **Tompkins, K.** (Under Review). Review of Exit from International Organizations, Costly Negotiation for Institutional Change. *Perspectives on Politics.*
+
+## Policy Reports
+
+-   **Tompkins, K.**, Lentini, F., & Adam, E. (2025, August). *The US-UK Economic Propsperity Deal: An Analysis from BritishAmerican Business*. <https://www.babinc.org/wp-content/uploads/The-US-UK-Economic-Prosperity-Deal-An-Analysis-from-BAB.pdf>. BritishAmerican Business.

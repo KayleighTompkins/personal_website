@@ -1,11 +1,28 @@
 ---
-title: Welcome to my website!
+title: Welcome!
+about:
+  template: trestles
+  image: images/K_Tompkins_Headshot.jpg
 ---
 
-This is a Quarto website.
+I'm Kayleigh Tompkins - a researcher and former policy advisor (UK Government) focused on the intersection of international relations and institutional stability. I'm currently pursuing graduate studies in Public Policy at the University of Texas at Dallas (UTD).\
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Research Interests 
 
-```{r}
-1 + 1
+\
+My work focuses on why states leave international organizations and the challenges of maintaining international cooperation. I'm currently interested in:
+
+-   International Organizations
+
+-   Democratic Backsliding
+
+-   Political Economy of Climate Change
+
+    ## Professional Background
+
+    Before returning to academia, I served as a **Policy Advisor for the UK Government**. This experience shapes my research, bridging the gap between theoretical political economy and on the ground experience.
+
+    Most recently I served as a Policy Fellow for **BritishAmerican Business** in Washington D.C., where I analyzed transatlantic trade policy.
+
+```         
 ```

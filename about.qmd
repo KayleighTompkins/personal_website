@@ -2,8 +2,16 @@
 title: "About"
 ---
 
-About this site
+I began my academic journey in the UK with a Bachelor's degree in History from the University of Oxford, St Anne's College. Graduating just seven days after the UK's vote to leave the EU in June 2016, I spent the next five years working for the UK government designing new policies which defined the UK's approach to international trade disputes after Brexit.
 
-```{r}
-1 + 1
-```
+After a family relocation to the US in 2022, I helped lead UC Berkeley's strategic engagement with its most important global and domestic partners. I re-embraced academia after moving to Dallas in 2024, beginning my graduate studies which are focused on the same question that inspired my career: why do states leave international organizations and how do those organizations respond to such exits?\
+\
+When not walking the halls of Green Hall, I enjoy hiking, running, team sports and hanging out with my husband and our two cats - Nellie and Norman who like to "help" with my research and coding.
+
+::: {#fig-nellie}
+![](images/Nellie_Suitcase.jpg){width="300"} Nellie, professional suitcase supervisor
+:::
+
+::: {#fig-norman}
+![](images/Norman_Helping.jpg){width="300"} Norman, dedicated research assistant
+:::
