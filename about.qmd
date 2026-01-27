@@ -1,5 +1,6 @@
 ---
 title: "About"
+fig-numbering: false
 ---
 
 I began my academic journey in the UK with a Bachelor's degree in History from the University of Oxford, St Anne's College. Graduating just seven days after the UK's vote to leave the EU in June 2016, I spent the next five years working for the UK government designing new policies which defined the UK's approach to international trade disputes after Brexit.
@@ -11,21 +12,11 @@ When not walking the halls of Green Hall, I enjoy hiking, running, team sports a
 :::: {.columns}
 
 ::: {.column width="50%"}
-
-::: {#fig-nellie fig-numbering=false}
-![](images/Nellie_Suitcase.jpg){width=100%}
-Nellie, professional suitcase supervisor
-:::
-
+![](images/Nellie_Suitcase.jpg){width=100% fig-cap="Nellie, professional suitcase supervisor"}
 :::
 
 ::: {.column width="50%"}
-
-::: {#fig-norman fig-numbering=false}
-![](images/Norman_Helping.jpg){width=100%}
-Norman, dedicated research assistant
-:::
-
+![](images/Norman_Helping.jpg){width=100% fig-cap="Norman, dedicated research assistant"}
 :::
 
 ::::
