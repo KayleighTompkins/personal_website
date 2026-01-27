@@ -7,7 +7,7 @@ about:
 
 I'm Kayleigh Tompkins - a researcher and former policy advisor (UK Government) focused on the intersection of international relations and institutional stability. I'm currently pursuing graduate studies in Public Policy at the University of Texas at Dallas (UTD).\
 
-## Research Interests 
+## Research Interests
 
 \
 My work focuses on why states leave international organizations and the challenges of maintaining international cooperation. I'm currently interested in:
@@ -20,9 +20,6 @@ My work focuses on why states leave international organizations and the challeng
 
 ## Professional Background
 
-    Before returning to academia, I served as a **Policy Advisor for the UK Government**. This experience shapes my research, bridging the gap between theoretical political economy and on the ground experience.
+Before returning to academia, I served as a **Policy Advisor for the UK Government**. This experience shapes my research, bridging the gap between theoretical political economy and practitioner insights.
 
-    Most recently I served as a Policy Fellow for **BritishAmerican Business** in Washington D.C., where I analyzed transatlantic trade policy.
-
-```         
-```
+I recently served as a Policy Fellow with BritishAmerican Business where I analyzed transatlantic trade policy and published an analysis of the UK-US Economic Prosperity Deal.
