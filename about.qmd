@@ -9,14 +9,12 @@ After a family relocation to the US in 2022, I helped lead UC Berkeley's strateg
 \
 When not walking the halls of Green Hall, I enjoy hiking, running, team sports and hanging out with my husband and our two cats - Nellie and Norman who like to "help" with my research and coding.
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
-![](images/Nellie_Suitcase.jpg){width=100% fig-cap="Nellie, professional suitcase supervisor"}
+![](images/Nellie_Suitcase.jpg){width="100%" fig-cap="Nellie, professional suitcase supervisor"}
 :::
 
 ::: {.column width="50%"}
-![](images/Norman_Helping.jpg){width=100% fig-cap="Norman, dedicated research assistant"}
+![](images/Norman_Helping.jpg){width="100%" fig-cap="Norman, dedicated research assistant"}
 :::
-
-::::
+:::
