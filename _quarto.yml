@@ -7,6 +7,10 @@ site-url: https://kayleightompkins.github.io/personal_website/
 website:
   title: "Kayleigh Tompkins"
   navbar:
+    right:
+      text:"CV"
+      href: CV.pdf
+      target: _blank
     left:
       - href: index.qmd
         text: Home
