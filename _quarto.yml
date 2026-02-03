@@ -8,9 +8,9 @@ website:
   title: "Kayleigh Tompkins"
   navbar:
     right:
-      text:"CV"
-      href: CV.pdf
-      target: _blank
+     - text: "CV"
+       href: CV.pdf
+       target: _blank
     left:
       - href: index.qmd
         text: Home

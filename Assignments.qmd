@@ -14,6 +14,6 @@ In "To Explain or to Predict", Galit Shmueli made several important contribution
 
 She outlines several useful uses of prediction to enhance explanatory work, including hypothesis generation, determining which way of measuring a concept is the most appropriate, improving explanations and theory comparison. She recommends using predictive models as a ceiling, first running the black box algorithm to see the maximum possible accuracy and then run the theory-based model. The gap (or lack of) between the two models generates important feedback as to whether the theory captures the phenomenon a researcher is trying to measure.
 
-Towards a third culture?
+Towards a third culture
 
 Since Breiman and Shmueli's papers, a potential "third culture" has emerged which marries the strengths of each school of thought. This approach - Causal Machine Learning - uses predictive algorithms inside explanatory methods, combining the accuracy benefits of the algorithmic modeling culture to strengthen the scientific claims of the data modeling culture. For example, methods like Synthetic Control have a goal which is firmly rooted in explanatory, causal inference, but now employ predictive algorithms as the means to optimize the method - e.g. using Random Forests to perfectly weight the "control states" which serves as the counterfactual to the treated unit.
