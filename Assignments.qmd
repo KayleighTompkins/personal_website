@@ -2,7 +2,7 @@
 title: "Knowledge Mining"
 ---
 
-## Assignment 1:
+## Reflection 1:
 
 In his provocative 2001 article "Statistical modeling: The two cultures", Leo Breiman describes two opposing cultures in statistical sciences: one focused on using data to find causal parameters and identify causal relationships ("data modelling") and the other which treats data mechanisms as a "black box" which forgoes causal understanding in favor of accurate predictions "algorithmic modeling" - now more commonly known as machine learning.
 
@@ -17,3 +17,8 @@ She outlines several useful uses of prediction to enhance explanatory work, incl
 Towards a third culture
 
 Since Breiman and Shmueli's papers, a potential "third culture" has emerged which marries the strengths of each school of thought. This approach - Causal Machine Learning - uses predictive algorithms inside explanatory methods, combining the accuracy benefits of the algorithmic modeling culture to strengthen the scientific claims of the data modeling culture. For example, methods like Synthetic Control have a goal which is firmly rooted in explanatory, causal inference, but now employ predictive algorithms as the means to optimize the method - e.g. using Random Forests to perfectly weight the "control states" which serves as the counterfactual to the treated unit.
+
+## Assignment 1
+
+-   [Lab 1: R Programming Basics I](docs/Lab01.html)
+-   [Lab 2: R Programming Basics II](docs/Lab02.html)
