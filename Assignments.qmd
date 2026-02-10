@@ -27,15 +27,17 @@ Since Breiman and Shmueli's papers, a potential "third culture" has emerged whic
 
 **AI and originality**
 
--   Speed up the production of original knowledge by providing AI as a tool
+-   Whether AI can create original content wholly depends on the subjective perception of what original output is. AI is trained on a certain body of training material, meaning that it cannot make predictions or generate content from existing knowledge outside of that database. AI, especially LLMs, are simply sophisticated prediction tools or algorithms designed to achieve a certain goal, this might lead some to conclude that AI can never truly produce truly original content and knowledge.
 
--   Made some efforts possible to discover new knowledge that wouldn't have been possible apart from 1000s human coders and years of effort.
+-   However, at the very least, I believe that AI can accelerate the the production of original knowledge by speeding up existing research tasks. It can find papers that I've not been able to in Google Scholar, and when I compared myself to two LLMs at a hand-coding task (dating democratic backsliding events from around the world), it's ability to search for information across languages across the world far out-performed mine.
 
--   Impact on creative industries
+-   Indeed, I believe AI tools are making it possible to extract and synthesize knowledge that exists but is not currently usable. For example, I'm considering a project which would take digitized historic records of international agencies and extracting data relating to state-exits. This is something that would take hundreds of human coders hundreds of hours to do, and is now something I'm potentially able to do as a research project.
+
+-   I personally believe that recombining existing knowledge in new ways can lead to original output, so I would argue that responsible, supervised AI use can absolutely generate new knowledge.
 
 **What is AGI?**
 
--   Artificial General Intelligence is a hypothesized future form of AI that exceeds human capabilities across nearly all tasks and has revolutionary implications for scientific research.
+-   Artificial General Intelligence is a hypothesized future form of AI that exceeds human capabilities across nearly all tasks and has revolutionary implications for scientific research. It assumes future AI models will have perfect data and perfect prediction.
 
 -   AI is already out-performing medical professionals at diagnosing diseases and can pass the US bar exam. Academics (both faculty and students) are using it to improve literature reviews, analyze data and help write grant reports.
 
