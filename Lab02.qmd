@@ -80,9 +80,6 @@ summary(mpg)
 ## Linear Regression
 
 ```{r}
-ptbu=c("MASS","ISLR")
-install.packages(ptbu, repos='http://cran.us.r-project.org')
-lapply(ptbu, require, character.only = TRUE)
 library(MASS)
 library(ISLR)
 
@@ -170,6 +167,19 @@ summary(lm(medv~lstat*age,data=Boston))
 4.  Problems with the dataset
 
 ```{r}
+# Define the URL
+url <- "https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"
+
+# Create a temporary file path
+tmp <- tempfile(fileext = ".dta")
+
+# Download the file to that path
+download.file(url, tmp, mode = "wb")
+
+# Read the file using haven
+library(haven)
+TEDS_2016 <- read_dta(tmp)
+
 #Check structure
 str(TEDS_2016$Tondu)
 
@@ -321,7 +331,6 @@ model1 <- lm(Tondu_numeric ~ female + DPP + age + edu + Taiwanese + Econ_worse, 
 summary(model1)
 
 # Visualize
-install.packages("sjPlot")
 library(sjPlot)
 
 # Visualize the coefficients
@@ -355,13 +364,13 @@ TEDS_ready %>%
     variable using the following:\
 
 ```{r}
-TEDS_2016\$Tondu\<-as.numeric(TEDS_2016\$Tondu,labels=c("Unification now”, “Status quo, unif. in future”, “Status quo, decide later", "Status quo forever", "Status quo, indep. in future", "Independence now”, “No response"))
+TEDS_2016$Tondu<-as.numeric(TEDS_2016$Tondu,labels=c("Unification now”, “Status quo, unif. in future”, “Status quo, decide later", "Status quo forever", "Status quo, indep. in future", "Independence now”, “No response"))
 
 # Standard frequency table
 table(TEDS_2016$Tondu)
 
 # Percentages (better for policy reports)
 prop.table(table(TEDS_2016$Tondu)) * 100
-    ```
+```
 
 

@@ -22,3 +22,23 @@ Since Breiman and Shmueli's papers, a potential "third culture" has emerged whic
 
 -   [Lab 1: R Programming Basics I](docs/Lab01.html)
 -   [Lab 2: R Programming Basics II](docs/Lab02.html)
+
+## Reflection 2
+
+**AI and originality**
+
+-   Speed up the production of original knowledge by providing AI as a tool
+
+-   Made some efforts possible to discover new knowledge that wouldn't have been possible apart from 1000s human coders and years of effort.
+
+-   Impact on creative industries
+
+**What is AGI?**
+
+-   Artificial General Intelligence is a hypothesized future form of AI that exceeds human capabilities across nearly all tasks and has revolutionary implications for scientific research.
+
+-   AI is already out-performing medical professionals at diagnosing diseases and can pass the US bar exam. Academics (both faculty and students) are using it to improve literature reviews, analyze data and help write grant reports.
+
+-   An AGI that can take all human knowledge, identify the most important research questions, analyze existing literature, download, clean and analyze data, and write research papers will fundamentally shift the role of a researcher. More importance will have to be placed on soft-skills, ethics and guiding the AI to benefit social goals.
+
+-   We might see a rise in humans focusing on survey and human-subject research projects, helping the AI prioritize which questions to pursue to benefit society and translating research to policy makers.
