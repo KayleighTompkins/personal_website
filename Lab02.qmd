@@ -164,3 +164,204 @@ contrasts(ShelveLoc)
 ```{r}
 summary(lm(medv~lstat*age,data=Boston))
 ```
+
+## TEDS2016 Dataset questions
+
+4.  Problems with the dataset
+
+```{r}
+#Check structure
+str(TEDS_2016$Tondu)
+
+# Look first few columns
+summary(TEDS_2016[, 1:5])
+
+# View the labels associated with values
+library(labelled)
+val_labels(TEDS_2016$Tondu)
+
+#Column Names
+colnames(TEDS_2016)
+```
+
+The dataset has a few issues including:
+- Nonresponses to survey questions were assigned a value of 9 which will artificially inflate means etc.
+
+```{r}
+library(dplyr)
+
+TEDS_clean <- TEDS_2016 %>%
+  mutate(across(everything(), ~na_if(., 9))) %>%
+  mutate(across(everything(), ~na_if(., 95))) %>%
+  mutate(across(everything(), ~na_if(., 98)))
+```
+
+-Variable labels should be recoded as a factor
+```{r}
+TEDS_ready <- haven::as_factor(TEDS_clean)
+
+#Check it worked
+summary(TEDS_clean$Tondu)
+```
+5.  How to deal with missing values
+
+I've already recoded non-responses, originally recorded as 9 above. Next I'll check for other nas in the original dataset (before I cleaned the nonresponses coded as 9) and get the dataset to record na if there are values of . or 9.
+
+```{r}
+colSums(is.na(TEDS_2016))
+
+library(dplyr)
+TEDS_2016 <- TEDS_2016 %>%
+  mutate(across(everything(), ~na_if(., 9)))
+```
+
+6.  Explore the relationship between Tondu and other variables including female, DPP, age, income, edu, Taiwanese and Econ_worse. What methods would you use?
+
+First I would check the nature of the variables - are they continuous or binary?
+
+Then I would visualize relationships and check correlations/regressions.
+
+```{r}
+# Check variable types
+TEDS_2016 %>% 
+  select(Tondu, female, DPP, age, income, edu, Taiwanese, Econ_worse) %>% 
+  str()
+```
+Tondu is an ordinal variable coded from Immediate Unification through to Immediate Independence. I will recode it into numbers where immediate unification = 1 and immediate independence = 6. 
+
+```{r}
+library(dplyr)
+
+TEDS_ready <- TEDS_ready %>%
+  mutate(Tondu_numeric = case_when(
+    as_factor(Tondu) == "Immediate unification" ~ 1,
+    as_factor(Tondu) == "Maintain the status quo,move toward unification" ~ 2,
+    as_factor(Tondu) == "Maintain the status quo, decide either unification or independence" ~ 3,
+    as_factor(Tondu) == "Maintain the status quo forever" ~ 4,
+    as_factor(Tondu) == "Maintain the status quo,move toward independence" ~ 5,
+    as_factor(Tondu) == "Immediate independence" ~ 6,
+    TRUE ~ NA_real_  # This handles the "Nonresponse" or NA values
+  ))
+```
+
+Female is a binary variable coded 1 if respondent is female.
+Likewise DPP, Taiwanese and Econ_worse are also binary and likely coded 1 if the respondent supports the DPP, is Taiwanese and thinks the economy is worse. 
+
+Age is a ratio variable and income is likely a coded scale from 1-10.
+
+Descriptive statistics
+```{r}
+TEDS_summary <- TEDS_2016 %>%
+  group_by(as_factor(Tondu)) %>%
+  summarize(across(
+    c(female, DPP, age, income, edu, Taiwanese, Econ_worse), 
+    ~mean(.x, na.rm = TRUE)
+  ))
+print(TEDS_summary)
+```
+Visualizations
+```{r}
+library(ggplot2)
+library(dplyr)
+
+#For categorical variables - female, DPP, Econ_Worse, Taiwanese:
+
+#Female
+TEDS_2016 %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(female), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+
+#DPP
+TEDS_2016 %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(DPP), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+
+#Econ_worse
+TEDS_2016 %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(Econ_worse), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+
+#Taiwanese
+TEDS_2016 %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(Taiwanese), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+
+#For continuous or ordinal - age, education, income
+# Age Plot
+ggplot(TEDS_2016, aes(x = as_factor(Tondu), y = age)) +
+  geom_boxplot() +
+  coord_flip()
+
+#Edu
+# Simple Age Plot
+ggplot(TEDS_2016, aes(x = as_factor(Tondu), y = edu)) +
+  geom_boxplot() +
+  coord_flip()
+
+#Income
+# Simple Age Plot
+ggplot(TEDS_2016, aes(x = as_factor(Tondu), y = income)) +
+  geom_boxplot() +
+  coord_flip()
+
+```
+
+Correlations/regressions
+```{r}
+model1 <- lm(Tondu_numeric ~ female + DPP + age + edu + Taiwanese + Econ_worse, data=TEDS_ready)
+
+summary(model1)
+
+# Visualize
+install.packages("sjPlot")
+library(sjPlot)
+
+# Visualize the coefficients
+plot_model(model1, 
+           show.values = TRUE, 
+           value.offset = .3,
+           title = "Predictors of Tondu Position (Unification to Independence)")
+```
+This regression plot and visualization indicates that supporting the DPP and being Taiwanese were statistically significant predictors of supporting Taiwanese independence. Being older was associated with a statistically significant decrease in support for independence, although this was a very small effect. 
+
+7.   How about the votetsai variable (vote for DPP candidate Tsai Ing-wen)?
+
+This suggests that voters who voted for Tsai Ing-wen were more supportive of independence and moving towards independence than voters who didn't. 
+
+```{r}
+# Check the labels first
+library(labelled)
+val_labels(TEDS_2016$votetsai)
+
+# Recode if necessary (assuming 1 is Tsai, and 0 or other numbers are missing)
+TEDS_2016 <- TEDS_2016 %>%
+  mutate(votetsai = na_if(votetsai, 9)) 
+
+TEDS_ready %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(votetsai), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+```
+8.  Generate frequency table and barchart of the Tondu variable. Assign labels to the
+    variable using the following:\
+
+```{r}
+TEDS_2016\$Tondu\<-as.numeric(TEDS_2016\$Tondu,labels=c("Unification now”, “Status quo, unif. in future”, “Status quo, decide later", "Status quo forever", "Status quo, indep. in future", "Independence now”, “No response"))
+
+# Standard frequency table
+table(TEDS_2016$Tondu)
+
+# Percentages (better for policy reports)
+prop.table(table(TEDS_2016$Tondu)) * 100
+    ```
+
+
