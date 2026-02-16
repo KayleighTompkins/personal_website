@@ -44,3 +44,323 @@ Since Breiman and Shmueli's papers, a potential "third culture" has emerged whic
 -   An AGI that can take all human knowledge, identify the most important research questions, analyze existing literature, download, clean and analyze data, and write research papers will fundamentally shift the role of a researcher. More importance will have to be placed on soft-skills, ethics and guiding the AI to benefit social goals.
 
 -   We might see a rise in humans focusing on survey and human-subject research projects, helping the AI prioritize which questions to pursue to benefit society and translating research to policy makers.
+
+## Reflection 3
+
+**How to start using AI for my project? Which two AI models are you using? How can you leverage them to help your research?**
+
+-   I'm currently using AI to help accelerate the hand-coding of 706 democratic backsliding events from around the world. The dataset I'm using dates them to the month level, but I need the exact dates in order to examine how citizens responded to them in real-time via Google Search. I began hand-coding the events myself but found the AI was able to find better sources more quickly than I was.
+
+-   I've crafted a prompt which I give to both Gemini and Chat GPT, asking it to identify the exact date, cite sources, and determine if the event meets the definition of democratic backsliding that I've developed from the literature.
+
+-   I got 100 events through before I realized that I didn't prompt the LLMs on how to prioritize the date where multiple dates were possible (e.g. the passage of legislation, versus entry into force). I asked each LLM to explain how it had been assigning the dates, and got a third LLM (Claude) to compare their reasonings.
+
+-   I then asked Claude to help me engineer a prompt to get the two LLMs to prioritize the first date the event would have become known to the public. I also asked Claude to review instances where the two LLMs disagreed on dates.
+
+-   TBC on group project,
+
+## Assignment 2:
+
+Reviewing the applications of data-mining in the real world:\
+
+I asked three LLMs (Gemini 3, Chat GPT and Claude) to conduct a 2,000-word structured systematic literature review on data mining and machine learning applications in political science and international relations, with a specific focus on modeling state exits from international organizations (IOs). I analyzed the three outputs and asked Gemini to combine the strongest sections into a final review which I've shared below along with my reflections:\
+
+**Data Mining and Machine Learning in International Relations: A Systematic Review**
+
+Introduction
+
+International relations (IR) research has experienced a major methodological shift over the past two decades, driven by the growth of digitized political data, new sources of real-time information, and advances in machine learning (ML) and data mining. These computational approaches have expanded what scholars can study and how they can study it—enabling analysis of complex, high-dimensional, and rapidly changing international phenomena such as conflict dynamics, alliance formation, trade and sanctions, diplomatic signaling, and institutional cooperation.
+
+Where traditional quantitative IR often relied on relatively low-dimensional datasets and parametric regression models, computational IR increasingly leverages automated data generation (e.g., event data, satellite imagery, large-scale text corpora) and flexible algorithms capable of capturing nonlinearity, interaction effects, and temporal dependence. The result has been both a practical expansion of predictive capacity—especially for rare events—and a renewed debate over what constitutes “good” inference in IR: explanation, prediction, or some productive combination of both.
+
+This systematic literature review synthesizes influential and representative work at the intersection of machine learning, data mining, and international relations. It documents methodological trends, major substantive applications, and ongoing debates about theory, transparency, and validation. The review highlights how computational methods have reshaped four core areas of IR: (1) conflict forecasting and political instability, (2) text-as-data and diplomatic communication, (3) event data and temporal dynamics, and (4) networks and international systems. It concludes by identifying persistent gaps and outlining promising directions for future research.
+
+Methodology
+
+Review Design
+
+This review follows systematic synthesis principles adapted from PRISMA-style approaches, recognizing that computational IR is methodologically heterogeneous and spans multiple subfields. A narrative synthesis approach was used rather than meta-analysis.
+
+Two selection logics were combined:
+
+**Systematic keyword search** to capture breadth across IR subdomains
+
+**Citation-weighted screening** to ensure inclusion of foundational and field-shaping contributions
+
+2.2 Search Strategy
+
+Searches were conducted across Google Scholar, Web of Science, Scopus, JSTOR, and arXiv using combinations of: “machine learning” OR “data mining” AND “international relations” “conflict prediction,” “early warning,” “political instability” “text as data,” “NLP,” “topic model,” “UN speeches,” “treaty text” “event data,” “ICEWS,” “GDELT,” “automated coding” “network analysis” AND “alliances,” “trade,” “international institutions”
+
+Backward and forward citation searches were used to identify connected clusters of influential work.
+
+Inclusion Criteria
+
+Studies were included if they:
+
+-   Applied ML, computational text analysis, or data mining methods
+
+-   Focused on core IR outcomes (conflict, cooperation, diplomacy, trade, institutions, bargaining, sanctions, alliances)
+
+-   Were published primarily in the modern computational era (roughly 2000–2025)
+
+Were either highly influential (citation impact) or illustrative of emerging trends
+
+3\. Computational IR: Foundational Debates and Methodological Shifts
+
+3.1 Prediction versus Explanation
+
+One of the most influential methodological contributions in computational IR is the critique that conventional explanatory models often perform poorly when evaluated on predictive grounds. Ward, Greenhill, and Bakke (2010) argued that many civil war models—despite producing statistically significant results—fail out-of-sample, implying limited usefulness for forecasting or policy applications. This critique catalyzed a broader debate about the goals of modeling in IR.
+
+Shmueli (2010) formalized the distinction between explanatory and predictive modeling, while Cranmer and Desmarais (2017) argued for complementarity: predictive modeling can improve theory by revealing nonlinearities, interactions, and boundary conditions that are often missed in parametric regression frameworks. In practice, computational IR increasingly treats prediction as (1) a separate modeling objective and (2) a validation tool that disciplines overfitting and strengthens credibility.
+
+3.2 Rare Events, Class Imbalance, and Evaluation
+
+Many key IR outcomes are rare events: conflict onset, coups, genocides, sanctions escalations, or diplomatic breakdowns. This creates class imbalance problems that weaken standard logistic regression performance. Muchlinski et al. (2016) demonstrated that ensemble methods such as random forests often outperform logistic regression for predicting civil war onset, particularly when events are infrequent.
+
+The computational IR literature has consequently emphasized:
+
+-   Handling class imbalance (reweighting, resampling, rare-events correction)
+
+-   Choosing evaluation metrics appropriate to rare events (precision–recall, AUC-PR, calibration)
+
+-   Using temporal and out-of-sample validation designs rather than purely in-sample fit
+
+This methodological infrastructure has been crucial for building early warning systems and forecasting pipelines.
+
+4\. Core Applications of Machine Learning and Data Mining in IR
+
+4.1 Conflict Forecasting and Political Instability
+
+Conflict prediction is the most developed and widely cited domain of ML in IR. Researchers have used algorithms such as random forests, gradient boosting, support vector machines, and neural networks to forecast civil war onset, conflict escalation, and state instability.
+
+A key contribution of this literature is the development of **early warning systems** that shift attention from retrospective explanation to prospective risk assessment. Hegre and colleagues’ forecasting work illustrates how large datasets, demographic and economic projections, and flexible modeling can generate long-term predictions useful for policy planning.
+
+Colaresi and Mahmood (2017) synthesized lessons from ML for conflict research, emphasizing that predictive performance depends on thoughtful feature construction, modeling choices, and appropriate validation—not merely on deploying complex algorithms. More recent critiques (e.g., Blair & Sambanis, 2020) argue that the most successful conflict forecasting work is not “atheoretical ML,” but rather ML informed by substantive knowledge and careful data construction.
+
+**Substantive insights from conflict forecasting:**
+
+Political instability often follows measurable trajectories rather than appearing suddenly
+
+Nonlinear relationships and interactions are common (e.g., regime type interacting with economic shocks)
+
+Predictive performance improves when models incorporate both structural conditions and short-run behavioral signals
+
+4.2 Event Data and Temporal Modeling
+
+A major enabler of computational IR has been the automation of political event data. Systems such as ICEWS and GDELT extract structured representations of international interactions from news sources, producing high-frequency indicators of cooperation and conflict. Earlier foundational work by King and Lowe (2003) and later advances in automated coding frameworks (e.g., Schrodt’s contributions) created the infrastructure that ML applications now rely upon.
+
+Machine learning methods applied to event data have been used to forecast:
+
+-   Escalation dynamics
+
+-   Diplomatic breakdown and crisis onset
+
+-   Sanctions and retaliation patterns
+
+-   Shifts in interstate cooperation
+
+The key conceptual contribution here is **dynamic modeling**: international politics is treated as a time-dependent process, where recent events, momentum, and sequencing matter. This has pushed IR toward models that capture temporal dependence, regime shifts, and path dependence.
+
+4.3 Text-as-Data, NLP, and Diplomatic Communication
+
+Text analysis is arguably the single most transformative computational development in political science and has been extensively adopted in IR. Grimmer and Stewart (2013) provided the foundational methodological framework for automated content analysis, emphasizing that text methods require validation, conceptual clarity, and attention to measurement error.
+
+Roberts et al. (2014) introduced structural topic models (STM), allowing covariates to influence topic prevalence and content. IR researchers quickly applied STM and other NLP techniques to UN General Assembly speeches, treaty texts, parliamentary debates, and media coverage.
+
+Prominent IR applications include:
+
+-   Extracting state preferences and issue emphasis from UN speeches
+
+-   Measuring rhetorical shifts in foreign policy priorities over time
+
+-   Estimating latent positions using speech and voting data (e.g., Bailey, Strezhnev & Voeten, 2017)
+
+-   Studying framing and persuasion in diplomacy and negotiation
+
+A central insight from this literature is that political language contains **strategic signals**. Rhetorical shifts can indicate preference change, resolve, coalition-building, or domestic audience positioning—often before behavior becomes observable in policy outputs.
+
+Recent developments also point toward **multilingual and large language model (LLM) applications**, including classification and scaling tasks across languages and contexts. While promising, this trend intensifies debates about transparency, reproducibility, and measurement validity.
+
+4.4 Networks and International Systems
+
+Network analysis provides a system-level lens on IR, treating international politics as embedded in webs of alliances, trade relationships, institutional ties, and diplomatic interaction. Hafner-Burton, Kahler, and Montgomery (2009) provided a foundational synthesis of network approaches in IR, demonstrating how network structure shapes influence, diffusion, and cooperation.
+
+Network methods have been applied to:
+
+-   Alliance systems and security partnerships
+
+-   Trade networks and economic interdependence
+
+-   International organizations and institutional density
+
+-   Conflict diffusion and contagion
+
+-   Multiplex networks linking multiple domains (trade + alliances + diplomacy)
+
+Computational network techniques—including community detection, clustering, centrality analysis, and network evolution models—allow scholars to identify blocs, measure influence, and model how network position shapes strategic behavior.
+
+**Substantive insights from network IR:**
+
+-   Influence is often relational rather than purely attribute-based
+
+-   System structure affects dyadic outcomes (e.g., conflict depends on network environment)
+
+-   Cooperation and conflict diffuse through networks rather than occurring independently
+
+5\. Integrating ML with Causal Inference in IR
+
+A growing methodological frontier is the integration of predictive ML with causal inference. IR scholars increasingly recognize that prediction alone does not answer causal questions central to theory and policy.
+
+Two influential toolkits include:
+
+-   **Double machine learning** approaches that flexibly model confounding while preserving valid inference (Chernozhukov et al., 2018)
+
+-   **Causal forests** and heterogeneous treatment effect estimation (Athey & Imbens, 2019)
+
+These methods are particularly relevant in IR because observational data often involve complex confounding structures (e.g., sanctions, peacekeeping, foreign aid, alliance formation). Computational causal methods offer a potential bridge between flexible modeling and interpretable causal claims—though they still require careful research design, transparent assumptions, and credible identification strategies.
+
+6\. Persistent Challenges in Computational IR
+
+Despite rapid growth, the literature identifies several recurring challenges.
+
+6.1 Interpretability and Theory Development
+
+Many high-performing ML models operate as black boxes, raising concerns about whether prediction improves explanation or contributes meaningfully to theory. Feature importance metrics are often incorrectly interpreted as causal effects, and strong predictive accuracy may conceal weak theoretical engagement.
+
+The best computational IR work increasingly treats ML as a complement to theory: a tool for discovering patterns, testing model generalizability, and generating new hypotheses rather than replacing substantive reasoning.
+
+6.2 Data Quality, Measurement, and Construct Validity
+
+Automated data sources—event data, text corpora, satellite imagery—carry measurement error, selection bias, and shifting coverage over time. News-based event data, for example, may reflect media incentives and geopolitical attention rather than true underlying events. Text corpora vary in genre, strategic intent, and translation quality.
+
+As a result, validation and robustness checks are central:
+
+-   Human validation of text and coded events
+
+-   Sensitivity to corpus choice and preprocessing decisions
+
+-   Temporal validation to address dataset drift
+
+6.3 Replication and Transparency
+
+Computational IR faces risks of replicability problems due to incomplete reporting of preprocessing pipelines, hyperparameters, and model selection procedures. Best practices increasingly emphasize:
+
+-   Full documentation of text preprocessing and feature engineering
+
+-   Shared code and reproducible workflows
+
+-   Pre-registration or clear separation of training and testing decisions
+
+7\. Gaps and Future Directions
+
+Several promising opportunities remain underdeveloped.
+
+1.  **Underexplored substantive domains**\
+
+    Diplomatic bargaining, negotiation processes, institutional design, and international legal compliance remain less computationally developed than conflict prediction.
+
+2.  **Real-time and streaming analysis**\
+
+    There is increasing interest in models that track international dynamics in near real time (especially using event data and social media), but concerns about data drift and manipulation persist.
+
+3.  **Multimodal IR**\
+
+    Combining text, event data, networks, and geospatial/satellite imagery remains technically demanding but conceptually promising, particularly for monitoring conflict, sanctions evasion, or humanitarian crises.
+
+4.  **Better integration with qualitative and formal methods**\
+
+    Multi-method designs—using ML to identify patterns and qualitative work to validate mechanisms—could help resolve interpretability concerns and strengthen theory-building.
+
+Suggested hypothesis:\
+\
+Recommended Hypothesis (Most Compelling)
+
+H: Latent Dissatisfaction and Behavioral Change
+
+States that exhibit increasing rhetorical distance from prevailing international norms will subsequently reduce their cooperative international behavior, even before observable policy shifts occur.
+
+Conclusion
+
+Machine learning and data mining have reshaped international relations by expanding the empirical terrain of the discipline and enabling models capable of handling complexity, high dimensionality, and temporal dependence. The most mature applications—conflict forecasting, automated event data, text-as-data, and network analysis—demonstrate that computational tools can uncover patterns that are difficult to detect with traditional methods and can provide meaningful improvements in predictive performance for rare and dynamic outcomes.
+
+At the same time, computational IR continues to confront enduring challenges: balancing prediction with explanation, ensuring construct validity, addressing bias and drift in automated data sources, and improving transparency and replicability. The most productive path forward is not algorithmic sophistication alone, but deeper integration of computational methods with IR theory, research design, and validation norms.
+
+As global politics becomes increasingly data-rich and fast-moving, computational methods are likely to become central tools in IR scholarship—especially where they are used not as substitutes for theory, but as instruments for improving measurement, testing generalizability, and generating new theoretical insight.
+
+Selected References (indicative core)
+
+Athey, S., & Imbens, G. (2019).\
+
+Bailey, M., Strezhnev, A., & Voeten, E. (2017).\
+
+Chernozhukov, V. et al. (2018).\
+
+Colaresi, M., & Mahmood, Z. (2017).\
+
+Cranmer, S., & Desmarais, B. (2017).\
+
+Grimmer, J., & Stewart, B. (2013).\
+
+Hafner-Burton, E., Kahler, M., & Montgomery, A. (2009).\
+
+Hegre, H. et al. (2017).\
+
+King, G., & Lowe, W. (2003).\
+
+Muchlinski, D. et al. (2016).\
+
+Roberts, M. et al. (2014).\
+
+Shmueli, G. (2010).\
+
+Ward, M., Greenhill, B., & Bakke, K. (2010).
+
+\
+**Reflection:\
+\
+How did each model approach the systematic review differently?**
+
+Gemini
+
+-   Gemini showed me some limited methodology, including the databases it looked at, how it categorized the papers by method and some of the search terms it used. It didn't show me any sources or references.
+
+-   It also over-prioritized inserting what it knows about me into its output even when it's not relevant. I've noticed it does this with other queries as well - e.g. mentioning I'm in graduate school when asking it for a recipe or running advice.
+
+Chat GPT
+
+-   Set out it's search strategy and inclusion criteria, giving me the exact words and combinations it used to search the databases for which boosted my confidence in its output. It also told me how many papers it had found and provided a selected reference list at the end, I checked some of them and they were real.
+
+-   I genuinely learned a lot from its original output about how machine learning and knowledge mining had been used in IR more broadly, and in my specific interest area (why states leave international organizations). I learned that it seems to have primarily been used to do text-based analysis and network analysis.
+
+-   I do suspect that it also took things it knows about me when it generated the gaps section, as these were specific to one of my ongoing projects.
+
+Claude
+
+-   Claude gave me the most detailed insights into its methodology, listing the databases it searched, the date-range it looked at and the search terms and combinations it used. It also shared its inclusion and exclusion criteria and gave me a very detailed breakdown on how it found 1,847 articles and decided to include 87 of those in the study. It did not provide cititations or a reference list.
+
+-   It's overview of which ML techniques are used in political science and IR was very helpful, and similarly to GPT identified that text-as-data/sentiment analysis, and network analysis were popular approaches. It identified that deep learning applications remained relatively rare.
+
+-   I wasn't aware of any studies that had used machine learning tools on my topic area of interest (exit from international organizations), yet Claude claimed to have identified eight. I challenged this and they turned out not to be true.
+
+-   Claude also consistently ignored the instruction that the literature review should be 2000 words.
+
+**Which prompt refinements yielded the best results for each model?**
+
+Asking Claude to provide in text citations and a reference list enabled me to check the content it was sharing with me. Especially the content which mentioned the eight papers which had used ML tools to look at state exits from IOs. When I challenged it on the existence of these papers it admitted that: "You've caught an important issue. In this systematic literature review, I constructed a realistic academic narrative to demonstrate the structure and style of a systematic review, but I did not actually conduct the review or have access to eight specific studies that used ML techniques to model IO withdrawals."!!
+
+I'm not aware of any ML tools that have been used and decided to prompt the other two LLMs more broadly to refine their literature review on applications within international relations more broadly.
+
+Asking Gemini to reconduct the review in greater depth while looking at IR more broadly, give in-text citations and a fully reference list improved its output a lot.
+
+I also asked GPT to re-issue the output and identify the key papers in IR that used machine learning and to define "key" and most-cited.
+
+\
+**What did you learn about leveraging AI for structured academic reviews?**
+
+I learned that asking the LLM to define key papers by number of citations helps to identify the really pivotal papers on the topic.
+
+I also became aware of the need to closely read and challenge the output when it doesn't look right, and to ask for citations and references to check for hallucinations.
+
+I found it very laborious to ask, manage and challenge three LLMs to generate the literature review. I'd rather use a main one plus other LLMs to explain concepts that aren't clear or review the other LLMs output, rather than generating three outputs and having to figure out the strengths and weaknesses of all of them.
+
+I've mainly been using Gemini but the poor quality of its output convinced me to go back to GPT for academic use.
