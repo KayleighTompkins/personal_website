@@ -1,0 +1,376 @@
+---
+title: "EPPS 6323: Lab02 R programming basics II"
+author: "Kayleigh Tompkins"
+format: html
+editor: visual
+---
+
+# R Programming Basic Commands
+
+(Adapted from ISLR Chapter 3 Lab: Introduction to R)
+
+## Indexing Data using \[\]
+
+```{r}
+A=matrix(1:16,4,4)
+A
+A[2,3]
+A[c(1,3),c(2,4)]
+A[1:3,2:4]
+A[1:2,]
+A[,1:2]
+A[1,]
+A[-c(1,3),] # What does -c() do? A: Tells R to drop certain columns or rows. 
+A[-c(1,3),-c(1,3,4)]
+dim(A) # Dimensions
+```
+
+## Loading Data from GitHub (remote)
+
+```{r}
+Auto=read.table("https://raw.githubusercontent.com/datageneration/knowledgemining/master/data/Auto.data")
+Auto=read.table("https://raw.githubusercontent.com/datageneration/knowledgemining/master/data/Auto.data",header=T,na.strings="?") 
+Auto=read.csv("https://raw.githubusercontent.com/datageneration/knowledgemining/master/data/Auto.csv") # read csv file
+# Which function reads data faster?
+
+# Try using this simple method
+# time1 = proc.time()
+# Auto=read.csv("https://raw.githubusercontent.com/datageneration/knowledgemining/master/data/Auto.csv",header=T,na.strings="?")
+# proc.time()-time1
+
+# Check on data
+dim(Auto)
+Auto[1:4,] # select rows
+Auto=na.omit(Auto)
+dim(Auto) # Notice the difference?
+names(Auto)
+```
+
+## Load data from ISLR website
+
+```{r Loaddata_from_web}
+Auto=read.table("https://www.statlearning.com/s/Auto.data",header=T,na.strings="?")
+dim(Auto)
+```
+
+## Additional Graphical and Numerical Summaries
+
+```{r}
+# plot(cylinders, mpg)
+plot(Auto$cylinders, Auto$mpg)
+attach(Auto)
+plot(cylinders, mpg)
+cylinders=as.factor(cylinders)
+plot(cylinders, mpg)
+plot(cylinders, mpg, col="red")
+plot(cylinders, mpg, col="red", varwidth=T)
+plot(cylinders, mpg, col="red", varwidth=T,horizontal=T)
+plot(cylinders, mpg, col="red", varwidth=T, xlab="cylinders", ylab="MPG")
+hist(mpg)
+hist(mpg,col=2)
+hist(mpg,col=2,breaks=15)
+#pairs(Auto)
+pairs(~ mpg + displacement + horsepower + weight + acceleration, Auto)
+plot(horsepower,mpg)
+# identify(horsepower,mpg,name) # Interactive: point and click the dot to identify cases
+summary(Auto)
+summary(mpg)
+```
+
+## Linear Regression
+
+```{r}
+library(MASS)
+library(ISLR)
+
+# Simple Linear Regression
+
+# fix(Boston)
+names(Boston)
+# lm.fit=lm(medv~lstat)
+attach(Boston)
+lm.fit=lm(medv~lstat,data=Boston)
+attach(Boston)
+lm.fit=lm(medv~lstat)
+lm.fit
+summary(lm.fit)
+names(lm.fit)
+coef(lm.fit)
+confint(lm.fit)
+predict(lm.fit,data.frame(lstat=(c(5,10,15))), interval="confidence")
+predict(lm.fit,data.frame(lstat=(c(5,10,15))), interval="prediction")
+# What is the difference between "confidence" and "prediction" difference? A: The prediction intervals are wider than the confidence intervals. 
+
+plot(lstat,medv)
+abline(lm.fit)
+abline(lm.fit,lwd=3)
+abline(lm.fit,lwd=3,col="red")
+plot(lstat,medv,col="red")
+plot(lstat,medv,pch=16)
+plot(lstat,medv,pch="+")
+plot(1:20,1:20,pch=1:20)
+par(mfrow=c(2,2))
+plot(lm.fit)
+plot(predict(lm.fit), residuals(lm.fit))
+plot(predict(lm.fit), rstudent(lm.fit))
+plot(hatvalues(lm.fit))
+which.max(hatvalues(lm.fit))
+```
+
+## Multiple Linear Regression
+
+```{r}
+lm.fit=lm(medv~lstat+age,data=Boston)
+summary(lm.fit)
+lm.fit=lm(medv~.,data=Boston)
+summary(lm.fit)
+library(car)
+vif(lm.fit)
+lm.fit1=lm(medv~.-age,data=Boston)
+summary(lm.fit1)
+lm.fit1=update(lm.fit, ~.-age)
+```
+
+## Non-linear Transformations of the Predictors
+
+```{r}
+lm.fit2=lm(medv~lstat+I(lstat^2))
+summary(lm.fit2)
+lm.fit=lm(medv~lstat)
+anova(lm.fit,lm.fit2)
+par(mfrow=c(2,2))
+plot(lm.fit2)
+lm.fit5=lm(medv~poly(lstat,5))
+summary(lm.fit5)
+summary(lm(medv~log(rm),data=Boston))
+```
+
+## Qualitative Predictors
+
+```{r}
+# fix(Carseats)
+names(Carseats)
+lm.fit=lm(Sales~.+Income:Advertising+Price:Age,data=Carseats)
+summary(lm.fit)
+attach(Carseats)
+contrasts(ShelveLoc)
+```
+
+## Interaction Terms (including interaction and single effects)
+
+```{r}
+summary(lm(medv~lstat*age,data=Boston))
+```
+
+## TEDS2016 Dataset questions
+
+4.  Problems with the dataset
+
+```{r}
+# Define the URL
+url <- "https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"
+
+# Create a temporary file path
+tmp <- tempfile(fileext = ".dta")
+
+# Download the file to that path
+download.file(url, tmp, mode = "wb")
+
+# Read the file using haven
+library(haven)
+TEDS_2016 <- read_dta(tmp)
+
+#Check structure
+str(TEDS_2016$Tondu)
+
+# Look first few columns
+summary(TEDS_2016[, 1:5])
+
+# View the labels associated with values
+library(labelled)
+val_labels(TEDS_2016$Tondu)
+
+#Column Names
+colnames(TEDS_2016)
+```
+
+The dataset has a few issues including:
+- Nonresponses to survey questions were assigned a value of 9 which will artificially inflate means etc.
+
+```{r}
+library(dplyr)
+
+TEDS_clean <- TEDS_2016 %>%
+  mutate(across(everything(), ~na_if(., 9))) %>%
+  mutate(across(everything(), ~na_if(., 95))) %>%
+  mutate(across(everything(), ~na_if(., 98)))
+```
+
+-Variable labels should be recoded as a factor
+```{r}
+TEDS_ready <- haven::as_factor(TEDS_clean)
+
+#Check it worked
+summary(TEDS_clean$Tondu)
+```
+5.  How to deal with missing values
+
+I've already recoded non-responses, originally recorded as 9 above. Next I'll check for other nas in the original dataset (before I cleaned the nonresponses coded as 9) and get the dataset to record na if there are values of . or 9.
+
+```{r}
+colSums(is.na(TEDS_2016))
+
+library(dplyr)
+TEDS_2016 <- TEDS_2016 %>%
+  mutate(across(everything(), ~na_if(., 9)))
+```
+
+6.  Explore the relationship between Tondu and other variables including female, DPP, age, income, edu, Taiwanese and Econ_worse. What methods would you use?
+
+First I would check the nature of the variables - are they continuous or binary?
+
+Then I would visualize relationships and check correlations/regressions.
+
+```{r}
+# Check variable types
+TEDS_2016 %>% 
+  select(Tondu, female, DPP, age, income, edu, Taiwanese, Econ_worse) %>% 
+  str()
+```
+Tondu is an ordinal variable coded from Immediate Unification through to Immediate Independence. I will recode it into numbers where immediate unification = 1 and immediate independence = 6. 
+
+```{r}
+library(dplyr)
+
+TEDS_ready <- TEDS_ready %>%
+  mutate(Tondu_numeric = case_when(
+    as_factor(Tondu) == "Immediate unification" ~ 1,
+    as_factor(Tondu) == "Maintain the status quo,move toward unification" ~ 2,
+    as_factor(Tondu) == "Maintain the status quo, decide either unification or independence" ~ 3,
+    as_factor(Tondu) == "Maintain the status quo forever" ~ 4,
+    as_factor(Tondu) == "Maintain the status quo,move toward independence" ~ 5,
+    as_factor(Tondu) == "Immediate independence" ~ 6,
+    TRUE ~ NA_real_  # This handles the "Nonresponse" or NA values
+  ))
+```
+
+Female is a binary variable coded 1 if respondent is female.
+Likewise DPP, Taiwanese and Econ_worse are also binary and likely coded 1 if the respondent supports the DPP, is Taiwanese and thinks the economy is worse. 
+
+Age is a ratio variable and income is likely a coded scale from 1-10.
+
+Descriptive statistics
+```{r}
+TEDS_summary <- TEDS_2016 %>%
+  group_by(as_factor(Tondu)) %>%
+  summarize(across(
+    c(female, DPP, age, income, edu, Taiwanese, Econ_worse), 
+    ~mean(.x, na.rm = TRUE)
+  ))
+print(TEDS_summary)
+```
+Visualizations
+```{r}
+library(ggplot2)
+library(dplyr)
+
+#For categorical variables - female, DPP, Econ_Worse, Taiwanese:
+
+#Female
+TEDS_2016 %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(female), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+
+#DPP
+TEDS_2016 %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(DPP), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+
+#Econ_worse
+TEDS_2016 %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(Econ_worse), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+
+#Taiwanese
+TEDS_2016 %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(Taiwanese), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+
+#For continuous or ordinal - age, education, income
+# Age Plot
+ggplot(TEDS_2016, aes(x = as_factor(Tondu), y = age)) +
+  geom_boxplot() +
+  coord_flip()
+
+#Edu
+# Simple Age Plot
+ggplot(TEDS_2016, aes(x = as_factor(Tondu), y = edu)) +
+  geom_boxplot() +
+  coord_flip()
+
+#Income
+# Simple Age Plot
+ggplot(TEDS_2016, aes(x = as_factor(Tondu), y = income)) +
+  geom_boxplot() +
+  coord_flip()
+
+```
+
+Correlations/regressions
+```{r}
+model1 <- lm(Tondu_numeric ~ female + DPP + age + edu + Taiwanese + Econ_worse, data=TEDS_ready)
+
+summary(model1)
+
+# Visualize
+library(sjPlot)
+
+# Visualize the coefficients
+plot_model(model1, 
+           show.values = TRUE, 
+           value.offset = .3,
+           title = "Predictors of Tondu Position (Unification to Independence)")
+```
+This regression plot and visualization indicates that supporting the DPP and being Taiwanese were statistically significant predictors of supporting Taiwanese independence. Being older was associated with a statistically significant decrease in support for independence, although this was a very small effect. 
+
+7.   How about the votetsai variable (vote for DPP candidate Tsai Ing-wen)?
+
+This suggests that voters who voted for Tsai Ing-wen were more supportive of independence and moving towards independence than voters who didn't. 
+
+```{r}
+# Check the labels first
+library(labelled)
+val_labels(TEDS_2016$votetsai)
+
+# Recode if necessary (assuming 1 is Tsai, and 0 or other numbers are missing)
+TEDS_2016 <- TEDS_2016 %>%
+  mutate(votetsai = na_if(votetsai, 9)) 
+
+TEDS_ready %>%
+  filter(!is.na(as_factor(Tondu))) %>% # This removes the NA rows
+  ggplot(aes(x = as_factor(votetsai), fill = as_factor(Tondu))) +
+  geom_bar(position = "fill") +
+  theme_minimal()
+```
+8.  Generate frequency table and barchart of the Tondu variable. Assign labels to the
+    variable using the following:\
+
+```{r}
+TEDS_2016$Tondu<-as.numeric(TEDS_2016$Tondu,labels=c("Unification now”, “Status quo, unif. in future”, “Status quo, decide later", "Status quo forever", "Status quo, indep. in future", "Independence now”, “No response"))
+
+# Standard frequency table
+table(TEDS_2016$Tondu)
+
+# Percentages (better for policy reports)
+prop.table(table(TEDS_2016$Tondu)) * 100
+```
+
+

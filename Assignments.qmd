@@ -1,8 +1,10 @@
 ---
 title: "Knowledge Mining"
+resources:
+  - Lab_ML01.R
 ---
 
-## Reflection 1:
+## Reflection 1
 
 In his provocative 2001 article "Statistical modeling: The two cultures", Leo Breiman describes two opposing cultures in statistical sciences: one focused on using data to find causal parameters and identify causal relationships ("data modelling") and the other which treats data mechanisms as a "black box" which forgoes causal understanding in favor of accurate predictions "algorithmic modeling" - now more commonly known as machine learning.
 
@@ -57,9 +59,7 @@ Since Breiman and Shmueli's papers, a potential "third culture" has emerged whic
 
 -   I then asked Claude to help me engineer a prompt to get the two LLMs to prioritize the first date the event would have become known to the public. I also asked Claude to review instances where the two LLMs disagreed on dates.
 
--   TBC on group project,
-
-## Assignment 2:
+## Assignment 2
 
 Reviewing the applications of data-mining in the real world:\
 
@@ -364,3 +364,48 @@ I also became aware of the need to closely read and challenge the output when it
 I found it very laborious to ask, manage and challenge three LLMs to generate the literature review. I'd rather use a main one plus other LLMs to explain concepts that aren't clear or review the other LLMs output, rather than generating three outputs and having to figure out the strengths and weaknesses of all of them.
 
 I've mainly been using Gemini but the poor quality of its output convinced me to go back to GPT for academic use.
+
+## Reflection 4
+
+How do humans find knowledge?
+
+-   Traditionally humans have found knowledge through books, journals and websites. An important source of knowledge sharing has also been through peer to peer exchange and teaching.
+
+-   Discovered vs found/production vs collection
+
+-   Find knowledge through experience, social process
+
+How is knowledge different from information?
+
+-   Data/information/knowledge
+
+-   Information - organized data
+
+-   Knowledge - structured and applied information, based on true information, can use it to solve a problem.
+
+List of AI discrepencies:
+
+-   I've noticed a number of hallucinations across all AI agents that I've used, including making up academic papers.
+
+-   I've also submitted the same command asking an LLM to do the same tast the same way and have received different outputs as the conversion progression - I think this is an example of context rot - attention to detail degrades as the conversation grows longer.
+
+-   I've also noticed that LLMs can latch on to one part of a prompt rather strictly, rather than balancing out its output across the prompts.
+
+-   Pro models are better than normal - sometimes dramatically so.
+
+-   The size and complexity of a prompt is really important in determining output.
+
+## Reflection 5
+Prediction vs explanation: when does it matter why something happens and when is it enough to know what will happen?
+
+Causal diagram for a relationship in my research area, confounders. Distinguish a causal claim from a predictive associaiton.
+## Assignment 3
+
+[Download my Machine Learning Lab](Lab_ML01.R)
+
+## Reflection 6 
+How can text mining reveal patters that close reading alone cannot? What are its blind spots?
+How can NLP and LLM assist in my research and provide data/assistance for my project?
+Name limitations and suggest solutions?
+Write an AI research guide incorporated ethical, technical and academic concerns that could lead to more problems than solutions (e.g. Hinton)
+
