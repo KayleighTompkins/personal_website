@@ -396,16 +396,19 @@ List of AI discrepencies:
 -   The size and complexity of a prompt is really important in determining output.
 
 ## Reflection 5
+
 Prediction vs explanation: when does it matter why something happens and when is it enough to know what will happen?
 
 Causal diagram for a relationship in my research area, confounders. Distinguish a causal claim from a predictive associaiton.
+
 ## Assignment 3
 
 [Download my Machine Learning Lab](Lab_ML01.R)
 
-## Reflection 6 
-How can text mining reveal patters that close reading alone cannot? What are its blind spots?
-How can NLP and LLM assist in my research and provide data/assistance for my project?
-Name limitations and suggest solutions?
-Write an AI research guide incorporated ethical, technical and academic concerns that could lead to more problems than solutions (e.g. Hinton)
+## Reflection 6
 
+How can text mining reveal patters that close reading alone cannot? What are its blind spots? How can NLP and LLM assist in my research and provide data/assistance for my project? Name limitations and suggest solutions? Write an AI research guide incorporated ethical, technical and academic concerns that could lead to more problems than solutions (e.g. Hinton)
+
+## Assignment 4 
+
+[Download my WordFish Lab](Assignment4.pdf)
