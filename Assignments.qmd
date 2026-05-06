@@ -395,7 +395,6 @@ List of AI discrepencies:
 
 -   The size and complexity of a prompt is really important in determining output.
 
-
 ## Assignment 3
 
 [Download my Machine Learning Lab](Lab_ML01.R)
